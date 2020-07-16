@@ -12,7 +12,7 @@ import {
 } from 'react-native'
 import { Router, Scene, Stack, Actions } from 'react-native-router-flux'
 import { Provider } from 'react-redux'
-import { Home, Splash, CharacterDetail } from '../../pages'
+import { Home, CharacterDetail } from '../../pages'
 import store from '../../../config/redux'
 
 class App extends Component {
@@ -25,7 +25,6 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <Stack key='root'>
-            <Scene key={'Splash'} component={Splash} hideNavBar />
             <Scene key={'Home'} component={Home} hideNavBar title={'Home'} />
             <Scene key={'CharacterDetail'}
               component={CharacterDetail}

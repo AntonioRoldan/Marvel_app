@@ -1,6 +1,5 @@
 import axios from 'axios'
-import { BASE_URL, PUBLIC_KEY, AUTH } from '../config/api'
-import qs from 'qs'
+import { BASE_URL, AUTH } from '../config/api'
 
 const CHARACTERS_URL = '/v1/public/characters' + AUTH 
 const instance = axios.create({
@@ -20,4 +19,3 @@ export const getCharacterDetails = (id) => {
 export const getComicDetails = (url) => { 
   return instance.get(url)
 }
-

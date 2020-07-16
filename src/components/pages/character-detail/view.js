@@ -7,7 +7,7 @@ import { Actions } from 'react-native-router-flux'
 
 class CharacterDetail extends React.Component {
   componentDidMount () {
-    this.props.getCharacter(this.props.id)
+    this.props.getCharacter(this.props.id.toString())
   }
 
   render () {
@@ -26,11 +26,9 @@ class CharacterDetail extends React.Component {
   }
 }
 
-Home.propTypes = {
-  charactersList: PropTypes.arrayOf(PropTypes.object),
-  loading: PropTypes.bool,
-  getCharacters: PropTypes.func,
-  setSelectedCharacter: PropTypes.func
+CharacterDetail.propTypes = {
+  getCharacter: PropTypes.func,
+  id: PropTypes.string
 }
 
 export default CharacterDetail
