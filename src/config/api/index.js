@@ -5,3 +5,4 @@ export const BASE_URL = 'https://gateway.marvel.com:443'
 var ts = new Date().getTime().toString()
 var hash = md5.hex_md5(ts + PRIVATE_KEY + PUBLIC_KEY)
 export const AUTH = '?ts=' + ts + '&apikey=' + PUBLIC_KEY + '&hash=' + hash
+export const AUTH_WITH_PARAMS = '&ts=' + ts + '&apikey=' + PUBLIC_KEY + '&hash=' + hash

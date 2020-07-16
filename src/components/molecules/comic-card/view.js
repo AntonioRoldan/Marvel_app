@@ -7,6 +7,7 @@ class Card extends React.Component {
 
   componentDidMount () {
     const { resourceURI } = this.props.comic
+    console.log('resourceURI :', resourceURI)
     this.props.getComic(resourceURI)
   }
 
@@ -16,7 +17,7 @@ class Card extends React.Component {
     const imageURI = path + '.' + extension
     return (
       <TouchableOpacity style={styles.container} onPress={() => onPress(character)}>
-        <Image src={imageURI} style={styles.image} />
+        <Image source={{uri: imageURI}} style={styles.image} />
         <View>
           <Text>{title}</Text>
           <Text>{description}</Text>

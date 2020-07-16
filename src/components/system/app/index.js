@@ -21,7 +21,6 @@ class App extends Component {
             <Scene key={'Home'} component={Home} hideNavBar title={'Home'} />
             <Scene key={'CharacterDetail'}
               component={CharacterDetail}
-              hideNavBar
               title={'Home'}
               navigationBarStyle={{ backgroundColor: 'red' }}
               titleStyle={{ color: 'white' }}

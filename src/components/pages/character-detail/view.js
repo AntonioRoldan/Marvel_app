@@ -5,25 +5,36 @@ import styles from './styles'
 import { ComicCard } from '../../molecules'
 
 class CharacterDetail extends React.Component {
-  componentDidMount () {
-    this.props.getCharacter(this.props.id.toString())
+  constructor(props) {
+    super(props)
+    this.state = {
+      imageURI: '',
+      name: '',
+      description: '',
+      comics: []
+    }
   }
-
-  renderItem = ({item: comic, index}) => {
-    <ComicCard comic={comic}></ComicCard>
-  }
-
-  render () {
+  async componentDidMount () {
+    await this.props.getCharacter(this.props.id)
     const { thumbnail  } = this.props.character
     const imageURI = thumbnail.path + '.' + thumbnail.extension
     const { name, description, comics: { items } } = this.props.character
+    this.setState({ name, description, imageURI, comics: items })
+  }
+
+  renderItem = ({item, index}) => {
+    <ComicCard comic={item}></ComicCard>
+  }
+
+  render () {
+   
     // items: [{resourceURI: }]
     return (
       <SafeAreaView style={styles.container}>
-        <Image src={imageURI} />
-        <Text>{name}</Text>
-        <Text>{description}</Text>
-        <FlatList data={items}
+        <Image source={{uri: this.state.imageURI}} style={styles.image} />
+        <Text style={styles.text}>{this.state.name}</Text>
+        <Text style={styles.text}>{this.state.description}</Text>
+        <FlatList data={this.state.comics}
           keyExtractor={(comic, index) => `${comic.name}`}
           renderItem={this.renderItem} />
       </SafeAreaView>

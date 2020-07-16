@@ -4,15 +4,23 @@ import {SafeAreaView, FlatList, RefreshControl} from 'react-native';
 import styles from './styles';
 import {CharacterCard} from '../../molecules';
 import {Actions} from 'react-native-router-flux';
-
+import _ from 'lodash'
 class Home extends React.Component {
   componentDidMount() {
     this.props.getCharacters()
   }
 
+  onEndReached = ({distanceFromEnd}) => {
+    const {charactersList, total, loading} = this.props;
+    const listSize = _.size(charactersList);
+    if (!loading && listSize > 0 && listSize < total) {
+      this.props.fetchNextPage()
+    }
+  }
+
   onCharacterPress = (character) => {
     // We make transition to character detail screen here
-    Actions.push('CharacterDetail', {title: character.name, id: character.id})
+    Actions.push('CharacterDetail', {title: character.name, id: character.id.toString()})
   }
 
   renderItem = ({item, index}) => (
@@ -28,6 +36,8 @@ class Home extends React.Component {
           data={charactersList}
           keyExtractor={(item, index) => `${item.id}`}
           renderItem={this.renderItem}
+          onEndReached={this.onEndReached}
+          onEndReachedThreshold={0.8}
           refreshControl={
             <RefreshControl
               colors={['white']}
@@ -47,6 +57,7 @@ class Home extends React.Component {
 Home.propTypes = {
   charactersList: PropTypes.arrayOf(PropTypes.object),
   loading: PropTypes.bool,
+  total: PropTypes.number,
   getCharacters: PropTypes.func,
   setSelectedCharacter: PropTypes.func,
 }

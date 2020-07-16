@@ -4,6 +4,7 @@ import { charactersActions } from '../../../redux/characters'
 
 const mapStateProps = (state) => {
   return {
+    total: state.characters.total,
     charactersList: state.characters.list,
     loading: state.characters.loading
   }
@@ -12,7 +13,8 @@ const mapStateProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getCharacters: () => dispatch(charactersActions.initList()),
-    setSelectedCharacter: (character) => dispatch(charactersActions.setCharacter(character))
+    setSelectedCharacter: (character) => dispatch(charactersActions.setCharacter(character)),
+    fetchNextPage: () => dispatch(charactersActions.fetchNextPage())
   }
 }
 
