@@ -11,12 +11,12 @@ class Home extends React.Component {
   }
 
   onCharacterPress = (character) => {
-    // We make transition to character detail screen here 
+    // We make transition to character detail screen here
     Actions.push('CharacterDetail', {title: character.name, id: character.id})
   }
 
   renderItem = ({item, index}) => (
-    <CharacterCard character={item} onPress={onCharacterPress}></CharacterCard>
+    <CharacterCard character={item} onPress={this.onCharacterPress}></CharacterCard>
   )
 
   render() {
@@ -26,7 +26,7 @@ class Home extends React.Component {
       <SafeAreaView style={styles.container}>
         <FlatList
           data={charactersList}
-          keyExtractor={(character, index) => `${character.id}`}
+          keyExtractor={(item, index) => `${item.id}`}
           renderItem={this.renderItem}
           refreshControl={
             <RefreshControl
@@ -40,7 +40,7 @@ class Home extends React.Component {
           }
         />
       </SafeAreaView>
-    );
+    )
   }
 }
 
@@ -49,6 +49,6 @@ Home.propTypes = {
   loading: PropTypes.bool,
   getCharacters: PropTypes.func,
   setSelectedCharacter: PropTypes.func,
-};
+}
 
 export default Home;

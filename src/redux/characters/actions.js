@@ -22,6 +22,7 @@ const setList = (list) => {
     type: types.SET_LIST,
     payload: { list }
   }
+  return action
 }
 
 export const initList = () => {
@@ -33,9 +34,22 @@ export const initList = () => {
 
 export const fetchComic = (url) => {
   return async (dispatch, getState) => {
-    const comic = await api.getComicDetails(url)
-    
+    try {
+      dispatch(setComic(null))
+      var { data: { data: { results } } } = await api.getComicDetails(url)
+      dispatch(setComic(results[0]))
+    } catch (err) {
+      Alert.alert('Error', err.message || 'Unknown error')
+    }
   }
+}
+
+const setComic = (comic) => {
+  const action = {
+    type: types.SET_COMIC,
+    payload: { comic }
+  }
+  return action
 }
 
 export const postCharacter = (character) => {
@@ -48,9 +62,13 @@ export const postCharacter = (character) => {
 
 export const fetchCharacter = (id) => {
   return async (dispatch, getState) => {
-    dispatch(setCharacter(null))
-    var { data: { results } } = await api.getCharacterDetails(id)
-    dispatch(setCharacter(results[0])) // TODO: Test this
+    try {
+      console.log('await api.getCharacters :', await api.getCharacterDetails(id))
+      var { data: { data: { results } } } = await api.getCharacterDetails(id)
+      dispatch(setCharacter(results[0])) // TODO: Test this
+    } catch (err) {
+      Alert.alert('Error', err.message || 'Unknown error')
+    }
   }
 }
 
@@ -58,8 +76,7 @@ const fetchList = () => {
   return async (dispatch, getState) => {
     try {
       dispatch(setLoading(true))
-      const { data: { results } } = await api.getCharacters()
-      console.log('data :', data)
+      const { data: { data: { results } } } = await api.getCharacters()
       dispatch(setList(results))
     } catch (err) {
       Alert.alert('Error', err.message || 'Unknown error')

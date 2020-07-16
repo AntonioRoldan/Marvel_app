@@ -12,10 +12,12 @@ export const getCharacters = () => {
 }
 
 export const getCharacterDetails = (id) => {
-  const CHARACTER_DETAILS_URL = '/v1/public/characters' + '/' + id + AUTH
+  const CHARACTER_DETAILS_URL = '/v1/public/characters' + '/' + id.toString() + AUTH
+  console.log('CHARACTER_DETAILS_URL :', CHARACTER_DETAILS_URL)
   return instance.get(CHARACTER_DETAILS_URL)
 }
 
 export const getComicDetails = (url) => { 
+  url = url + AUTH
   return instance.get(url)
 }

@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
 import {
-  StatusBar
+  StatusBar, View
 } from 'react-native'
 import { Router, Scene, Stack, Actions } from 'react-native-router-flux'
 import { Provider } from 'react-redux'
@@ -32,9 +32,6 @@ class App extends Component {
               rightButtonTextStyle={{ color: 'white' }}
             />
 
-            // Create scene for the character detail view
-            // Create scene for adding character
-            // Create scene for comic detail
           </Stack>
         </Router>
       </Provider>

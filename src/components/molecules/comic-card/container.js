@@ -4,13 +4,13 @@ import { charactersActions } from '../../../redux/characters'
 
 const mapStateProps = (state) => {
   return {
-    character: state.characters.character
+    comic: state.characters.comic
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getCharacter: (id) => dispatch(charactersActions.fetchCharacter(id))
+    getComic: (url) => dispatch(charactersActions.fetchComic(url))
   }
 }
 

@@ -5,16 +5,21 @@ import styles from './styles'
 
 class Card extends React.Component {
 
-  componentDidMount() {
-    const { resourceURI, name } = this.props.comic
+  componentDidMount () {
+    const { resourceURI } = this.props.comic
+    this.props.getComic(resourceURI)
   }
 
   render () {
+    const { title, description, thumbnail } = this.props.comic
+    const { path, extension } = thumbnail
+    const imageURI = path + '.' + extension
     return (
       <TouchableOpacity style={styles.container} onPress={() => onPress(character)}>
         <Image src={imageURI} style={styles.image} />
         <View>
-          <Text style={styles.name}>{character.name}</Text>
+          <Text>{title}</Text>
+          <Text>{description}</Text>
         </View>
       </TouchableOpacity>
     );
@@ -30,4 +35,4 @@ Card.propTypes = {
   onPress: PropTypes.func.isRequired
 }
 
-export default Card;
+export default Card
