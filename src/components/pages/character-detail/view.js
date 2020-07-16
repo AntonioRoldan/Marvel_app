@@ -2,12 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { SafeAreaView, Image, View, Text, FlatList } from 'react-native'
 import styles from './styles'
-import { CharacterCard } from '../../molecules'
-import { Actions } from 'react-native-router-flux'
+import { ComicCard } from '../../molecules'
 
 class CharacterDetail extends React.Component {
   componentDidMount () {
     this.props.getCharacter(this.props.id.toString())
+  }
+
+  renderItem = ({item: comic, index}) => {
+    <ComicCard comic={comic}></ComicCard>
   }
 
   render () {
@@ -20,7 +23,10 @@ class CharacterDetail extends React.Component {
         <Image src={imageURI} />
         <Text>{name}</Text>
         <Text>{description}</Text>
-        // TODO: Add comics' flat list here as an add-on 
+        // TODO: Add comics' flat list here as an add-on
+        <FlatList data={items}
+          keyExtractor={(comic, index) => `${comic.name}`}
+          renderItem={this.renderItem} />
       </SafeAreaView>
     )
   }

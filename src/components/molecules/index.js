@@ -1,3 +1,3 @@
 import CharacterCard from './character-card'
-
-export { CharacterCard }
+import ComicCard from './comic-card'
+export { CharacterCard, ComicCard }

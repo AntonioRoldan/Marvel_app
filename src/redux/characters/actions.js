@@ -24,10 +24,17 @@ const setList = (list) => {
   }
 }
 
-export const initList = (list) => {
+export const initList = () => {
   return (dispatch) => {
     dispatch(setList([]))
     dispatch(fetchList())
+  }
+}
+
+export const fetchComic = (url) => {
+  return async (dispatch, getState) => {
+    const comic = await api.getComicDetails(url)
+    
   }
 }
 

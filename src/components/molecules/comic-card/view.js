@@ -4,10 +4,12 @@ import { Image, View, Text, TouchableOpacity } from 'react-native'
 import styles from './styles'
 
 class Card extends React.Component {
+
+  componentDidMount() {
+    const { resourceURI, name } = this.props.comic
+  }
+
   render () {
-    const { character, onPress } = this.props
-    const { thumbnail: { path }, thumbnail: { extension } } = character
-    const imageURI = character.thumbnail ? path + '.' + extension : '' // TODO: Add marvel placeholder
     return (
       <TouchableOpacity style={styles.container} onPress={() => onPress(character)}>
         <Image src={imageURI} style={styles.image} />
@@ -15,12 +17,12 @@ class Card extends React.Component {
           <Text style={styles.name}>{character.name}</Text>
         </View>
       </TouchableOpacity>
-    )
+    );
   }
 }
 
 Card.defaultProps = {
-  onPress: () => {}
+  onPress: () => {},
 }
 
 Card.propTypes = {
@@ -28,4 +30,4 @@ Card.propTypes = {
   onPress: PropTypes.func.isRequired
 }
 
-export default Card
+export default Card;
