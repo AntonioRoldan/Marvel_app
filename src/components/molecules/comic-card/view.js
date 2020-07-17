@@ -5,22 +5,34 @@ import styles from './styles'
 
 class Card extends React.Component {
 
-  componentDidMount () {
-    const { resourceURI } = this.props.comic
-    console.log('resourceURI :', resourceURI)
-    this.props.getComic(resourceURI)
+  constructor(props) {
+    super(props)
+    this.state = {
+      title: '',
+      description: '',
+      imageURL: ''
+    }
   }
 
-  render () {
+  componentDidMount () {
+    const { resourceURI } = this.props.comicItem
+    console.log('resourceURI :', resourceURI)
+    this.props.getComic(resourceURI)
     const { title, description, thumbnail } = this.props.comic
     const { path, extension } = thumbnail
     const imageURI = path + '.' + extension
+    this.setState({ 
+      title, description, imageURI
+    })
+  }
+
+  render () {
     return (
       <TouchableOpacity style={styles.container} onPress={() => onPress(character)}>
-        <Image source={{uri: imageURI}} style={styles.image} />
+        <Image source={{ uri: this.state.imageURI }} style={styles.image} />
         <View>
-          <Text>{title}</Text>
-          <Text>{description}</Text>
+          <Text>{this.state.title}</Text>
+          <Text>{this.state.description}</Text>
         </View>
       </TouchableOpacity>
     );

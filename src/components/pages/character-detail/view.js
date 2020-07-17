@@ -23,7 +23,7 @@ class CharacterDetail extends React.Component {
   }
 
   renderItem = ({item, index}) => {
-    <ComicCard comic={item}></ComicCard>
+    <ComicCard comicItem={item}></ComicCard>
   }
 
   render () {
