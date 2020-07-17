@@ -8,9 +8,8 @@ class Card extends React.Component {
     const { character, onPress } = this.props
     const { thumbnail } = character
     const imageURI = thumbnail.path + '.' + thumbnail.extension  // TODO: Add marvel placeholder
-    console.log('imageURI :', imageURI)
     return (
-      <TouchableOpacity onPress={() => onPress(character)}>
+      <TouchableOpacity style={styles.container} onPress={() => onPress(character)}>
         <Image source={{ uri: imageURI }} resizeMode='cover' style={styles.image} />
         <View>
           <Text style={styles.text}>{character.name}</Text>

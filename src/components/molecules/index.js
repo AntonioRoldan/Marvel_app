@@ -1,3 +1,4 @@
 import CharacterCard from './character-card'
 import ComicCard from './comic-card'
-export { CharacterCard, ComicCard }
+import HeaderCard from './header-card'
+export { CharacterCard, ComicCard, HeaderCard }

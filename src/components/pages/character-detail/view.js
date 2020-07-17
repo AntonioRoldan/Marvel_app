@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { SafeAreaView, Image, Text, FlatList } from 'react-native'
 import styles from './styles'
-import { ComicCard } from '../../molecules'
+import { ComicCard, HeaderCard } from '../../molecules'
+
 
 class CharacterDetail extends React.Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class CharacterDetail extends React.Component {
       imageURI: '',
       name: '',
       description: '',
-      comics: []
+      comics: [],
+      data: []
     }
   }
   async componentDidMount () {
@@ -19,11 +21,15 @@ class CharacterDetail extends React.Component {
     const { thumbnail  } = this.props.character
     const imageURI = thumbnail.path + '.' + thumbnail.extension
     const { name, description, comics: { items } } = this.props.character
-    this.setState({ name, description, imageURI, comics: items })
+    const header = { imageURI, name, description }
+    this.setState({ name, description, imageURI, data: [header, ...items] })
   }
 
   renderItem = ({item, index}) => {
-    <ComicCard comicItem={item}></ComicCard>
+    if(item.imageURI) {
+      return (<HeaderCard header={item}></HeaderCard>)
+    }
+    return (<ComicCard comicItem={item}></ComicCard>)
   }
 
   render () {
@@ -31,11 +37,8 @@ class CharacterDetail extends React.Component {
     // items: [{resourceURI: }]
     return (
       <SafeAreaView style={styles.container}>
-        <Image source={{uri: this.state.imageURI}} style={styles.image} />
-        <Text style={styles.text}>{this.state.name}</Text>
-        <Text style={styles.text}>{this.state.description}</Text>
-        <FlatList data={this.state.comics}
-          keyExtractor={(comic, index) => `${comic.name}`}
+        <FlatList data={this.state.data}
+          keyExtractor={(item, index) => `${item.name}`}
           renderItem={this.renderItem} />
       </SafeAreaView>
     )

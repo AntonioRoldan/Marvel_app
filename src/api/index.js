@@ -18,6 +18,8 @@ export const getCharacterDetails = (id) => {
 }
 
 export const getComicDetails = (url) => { 
+  url = url.substring(25, url.length - 1)
   url = url + AUTH
+  console.log('url :', url)
   return instance.get(url)
 }

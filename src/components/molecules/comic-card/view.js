@@ -14,10 +14,9 @@ class Card extends React.Component {
     }
   }
 
-  componentDidMount () {
+  async componentDidMount () {
     const { resourceURI } = this.props.comicItem
-    console.log('resourceURI :', resourceURI)
-    this.props.getComic(resourceURI)
+    await this.props.getComic(resourceURI)
     const { title, description, thumbnail } = this.props.comic
     const { path, extension } = thumbnail
     const imageURI = path + '.' + extension
@@ -28,24 +27,20 @@ class Card extends React.Component {
 
   render () {
     return (
-      <TouchableOpacity style={styles.container} onPress={() => onPress(character)}>
+      <View style={styles.container}>
         <Image source={{ uri: this.state.imageURI }} style={styles.image} />
         <View>
-          <Text>{this.state.title}</Text>
-          <Text>{this.state.description}</Text>
+          <Text style={styles.title} >{this.state.title}</Text>
+          <Text style={styles.description} >{this.state.description}</Text>
         </View>
-      </TouchableOpacity>
-    );
+      </View>
+    )
   }
 }
 
-Card.defaultProps = {
-  onPress: () => {},
-}
 
 Card.propTypes = {
-  comic: PropTypes.object.isRequired,
-  onPress: PropTypes.func.isRequired
+  comic: PropTypes.object.isRequired
 }
 
 export default Card

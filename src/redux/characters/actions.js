@@ -40,7 +40,7 @@ export const fetchComic = (url) => {
       var { data: { data: { results } } } = await api.getComicDetails(url)
       dispatch(setComic(results[0]))
     } catch (err) {
-      Alert.alert('Error', err.message || 'Unknown error')
+      console.log('Error :', err.message)
     }
   }
 }
