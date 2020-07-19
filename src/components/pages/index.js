@@ -1,3 +1,4 @@
 import Home from './home'
 import CharacterDetail from './character-detail'
-export { Home, CharacterDetail }
+import CharactersAdd from './characters-add'
+export { Home, CharacterDetail, CharactersAdd }

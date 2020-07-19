@@ -18,6 +18,12 @@ class Home extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if(prevProps !== this.props) {
+      console.log('this.props.charactersList :', this.props.charactersList)
+    }
+  }
+
   onCharacterPress = (character) => {
     // We make transition to character detail screen here
     Actions.push('CharacterDetail', {title: character.name, id: character.id.toString()})

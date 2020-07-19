@@ -6,8 +6,7 @@ import styles from './styles'
 class Card extends React.Component {
   render () {
     const { character, onPress } = this.props
-    const { thumbnail } = character
-    const imageURI = thumbnail.path + '.' + thumbnail.extension  // TODO: Add marvel placeholder
+    const imageURI = character.thumbnail ? character.thumbnail.path + '.' + character.thumbnail.extension : character.image.uri // TODO: Add marvel placeholder
     return (
       <TouchableOpacity style={styles.container} onPress={() => onPress(character)}>
         <Image source={{ uri: imageURI }} resizeMode='cover' style={styles.image} />

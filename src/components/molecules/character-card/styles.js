@@ -8,6 +8,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#272727'
   },
   image: { width: '100%', height: 220 },
-  text: { color: 'white', fontSize: 17 }
+  text: { color: 'white', fontSize: 20, marginTop: 20, marginBottom: 20 }
 })
 export default styles

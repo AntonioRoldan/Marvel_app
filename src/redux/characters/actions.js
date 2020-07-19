@@ -65,8 +65,8 @@ const setPage = (page) => {
 
 export const postCharacter = (character) => {
   return async (dispatch, getState) => {
-    var charactersList = getState().list
-    charactersList.push(character)
+    var charactersList = getState().characters.list
+    charactersList.unshift(character)
     dispatch(setList(charactersList))
   }
 }

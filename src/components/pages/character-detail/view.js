@@ -45,10 +45,6 @@ class CharacterDetail extends React.Component {
   }
 }
 
-CharacterDetail.defaultProps = {
-
-}
-
 CharacterDetail.propTypes = {
   getCharacter: PropTypes.func,
   id: PropTypes.string

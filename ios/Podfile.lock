@@ -236,6 +236,8 @@ PODS:
     - React-cxxreact (= 0.63.1)
     - React-jsi (= 0.63.1)
   - React-jsinspector (0.63.1)
+  - react-native-image-picker (2.3.3):
+    - React
   - React-RCTActionSheet (0.63.1):
     - React-Core/RCTActionSheetHeaders (= 0.63.1)
   - React-RCTAnimation (0.63.1):
@@ -343,6 +345,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
   - React-RCTBlob (from `../node_modules/react-native/Libraries/Blob`)
@@ -404,6 +407,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-image-picker:
+    :path: "../node_modules/react-native-image-picker"
   React-RCTActionSheet:
     :path: "../node_modules/react-native/Libraries/ActionSheetIOS"
   React-RCTAnimation:
@@ -460,6 +465,7 @@ SPEC CHECKSUMS:
   React-jsi: b32a31da32e030f30bbf9a8d3a9c8325df9e793f
   React-jsiexecutor: 7ab9cdcdd18d57652fb041f8a147fe9658d4e00a
   React-jsinspector: 2e28bb487e42dda6c94dbfa0c648d1343767a0fb
+  react-native-image-picker: a6c3d644751a388b0fc8b56822ff7cbd398a3008
   React-RCTActionSheet: 1702a1a85e550b5c36e2e03cb2bd3adea053de95
   React-RCTAnimation: ddda576010a878865a4eab83a78acd92176ef6a1
   React-RCTBlob: 34334384284c81577409d5205bd2b9ff594d8ab6

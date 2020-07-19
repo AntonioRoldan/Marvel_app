@@ -1,27 +1,19 @@
 
 import React, { Component } from 'react'
-import {
-  StatusBar, View
-} from 'react-native'
 import { Router, Scene, Stack, Actions } from 'react-native-router-flux'
 import { Provider } from 'react-redux'
-import { Home, CharacterDetail } from '../../pages'
+import { Home, CharacterDetail, CharactersAdd } from '../../pages'
 import store from '../../../config/redux'
 
 class App extends Component {
-  constructor (props) {
-    super(props)
-    StatusBar.setBarStyle('light-content', true)
-  }
+
+
   render () {
     return (
       <Provider store={store}>
         <Router>
           <Stack key='root'>
-            <Scene key={'Home'} component={Home} hideNavBar title={'Home'} />
-            <Scene key={'CharacterDetail'}
-              component={CharacterDetail}
-              title={'Home'}
+            <Scene key={'Home'}
               navigationBarStyle={{ backgroundColor: 'red' }}
               titleStyle={{ color: 'white' }}
               backButtonTextStyle={{ color: 'white' }}
@@ -29,7 +21,15 @@ class App extends Component {
               rightTitle={'Add'}
               onRight={() => Actions.push('CharactersAdd')}
               rightButtonTextStyle={{ color: 'white' }}
+              component={Home} title={'Home'} />
+            <Scene key={'CharacterDetail'}
+              component={CharacterDetail}
+              navigationBarStyle={{ backgroundColor: 'red' }}
+              titleStyle={{ color: 'white' }}
+              backButtonTextStyle={{ color: 'white' }}
+              backButtonTintColor={'white'}
             />
+            <Scene key={'CharactersAdd'} component={CharactersAdd} title={'Add character'} />
 
           </Stack>
         </Router>
